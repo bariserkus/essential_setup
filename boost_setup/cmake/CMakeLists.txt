@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.22)
+project(boost_setup)
+set(CMAKE_CXX_STANDARD 20)
+#set(CMAKE_CXX_FLAGS "-pthread")
+add_executable(main.out main.cpp)
+target_link_libraries(main.out pthread)
+target_link_libraries(main.out boost_thread)

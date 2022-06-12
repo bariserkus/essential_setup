@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.22)
+project(testtbb)
+set(CMAKE_CXX_STANDARD 20)
+find_package(TBB REQUIRED)
+add_executable(testtbb_long.out testtbb_long.cpp)
+add_executable(testtbb_short.out testtbb_short.cpp)
+target_link_libraries(testtbb_long.out tbb)
+target_link_libraries(testtbb_short.out tbb)

@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.22)
+project(testOpenMP)
+set(CMAKE_CXX_STANDARD 20)
+add_executable(testOpenMP.out main.cpp)
+set(CMAKE_CXX_FLAGS "-fopenmp")
+target_link_libraries(testOpenMP.out gomp)
