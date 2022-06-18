@@ -15,7 +15,7 @@ First do cmake:
 
     $ mkdir build
     $ cd build
-    $ cmake
+    $ cmake ..
     
 Then make in the `build` directory:
 

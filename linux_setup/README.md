@@ -3,38 +3,73 @@
 
 ## Gnome Tweak Tools
 
+A utility tool to configure Gnome desktop and such.
+
 `$ sudo apt install gnome-tweak-tool` 
 
 `$ gnome-tweaks`
 
+Note that you can activate already-installed extentions from here.
+
+
+## Gnome Shell Extensions
+
+Small add-ons for Gnome to make it more practical and efficient.
+
+There are several ways to install extensions:
+
+1. Install a minimal set of extentions
+2. Install the extension using `apt`
+3. Install the extension using a web browser
+4. Download and install manually
+
+### 1. Install a minimal set of extensions
+
+`sudo apt install gnome-shell-extensions` 
+
+### 2. Install the extension using `apt`
+
 Search for Gnome Shell Extensions
 
-`$ apt search gnome-shell-extension
+`$ apt search gnome-shell-extension-??????`
 
 Install an extension
 
 `$ sudo apt install gnome-shell-extension-??????`
 
-Or Alternatively, you can install the extensions from Gnome Extentions web site using a web browser plugin:
+### 3. Install the extension using a web browser
+
+You can install the extensions from Gnome Extentions web site using a web browser plugin:
 
 <https://extensions.gnome.org/>
 
+- first install the plugin
+- then install the connector: `sudo apt install chrome-gnome-shell`
+- install the extension from the web site of that extension
 
+### 4. Download and install manually
+
+Please see related web pages...
+
+Please see <https://itsfoss.com/gnome-shell-extensions/> for more info.
+
+## Gnome Shell Extension Manager
+
+A tool to manage Gnome shell extensions.
+
+`sudo apt install gnome-shell-extension-prefs`
+
+`gnome-extensions-app`
 
 
 ## System Monitor
 
-A tool to observe the system resources on the taskbar visually.
+A Gnome shell extension to observe the system resources on the taskbar visually.
 
-* Go to Gnome Tweak Tools
-* Go to Extensions
-* Go to System-Monitor and turn it on.
-
-Alternatively, you can install it from the Gnome Extension web site:
+Install it from the web page:
 
 <https://extensions.gnome.org/extension/120/system-monitor/>
 
-Note: Not sure if the Gnome Extension web site one is the official one.
 
 ## Alacarte
 
@@ -161,6 +196,96 @@ Then,
 
 * allow executing this shortcut using right-click -> Properties -> Permissions -> "Allow executing file as program"
 * right-click "Allow Launching"
+
+## OpenSSL Libraries
+
+`sudo apt-get install libssl-dev`
+
+## Install the latest version of CMAKE
+
+`sudo apt remove --purge --auto-remove cmake`
+
+`sudo apt update && \`
+
+`sudo apt install -y software-properties-common lsb-release && \`
+
+`sudo apt clean all`
+
+`wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null`
+
+`sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"`
+
+`sudo apt update`
+
+`sudo apt install cmake`
+
+## Install Latest Stable GCC
+
+Ubuntu 20.04 has an older version of GCC, I guess, 9.4.0. To install the latest version, which I guess is 11.1.0, using PPA and `apt`:
+
+`sudo apt update`
+
+`sudo apt install build-essential`
+
+`sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test`
+
+`sudo apt install gcc-11 g++-11`
+
+Check version:
+
+`g++ --version`
+
+## Configure Multiple Installations of GCC
+
+I assume, you have versions 9 and 11 of GCC:
+
+`sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 11`
+
+`sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 11`
+
+`sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 9`
+
+`sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 9`
+
+Then use the following to select the default version:
+
+`sudo update-alternatives --config gcc`
+
+`sudo update-alternatives --config g++`
+
+If you made a mistake with the configuration, you can use to remove all configuration settings by
+
+`sudo update-alternatives --remove-all gcc`
+
+`sudo update-alternatives --remove-all g++`
+
+Then you can configure them again with the correct settings.
+
+## Install Boost Libraries
+
+`sudo apt-get update`
+
+`sudo apt install libboost-all-dev`
+
+## Install CUDA Toolkit
+
+Go to CUDA Developer web site and download the installer, follow the instructions there. I suggest to follow the `deb(local)` path.
+
+The `.bashrc` enviroment:
+
+```
+## CUDA variables
+#export CUDA_HOME="/usr/local/cuda"
+#export PATH="$PATH:$CUDA_HOME/bin"
+#export CUDACXX="/usr/local/cuda/bin/nvcc"  #This is for CMAKE to recognize CUDA compiler
+```
+
+
+
+
+
+
+
 
 
  

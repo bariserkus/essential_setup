@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.1.2)
 project(boost_setup)
 set(CMAKE_CXX_STANDARD 20)
 #set(CMAKE_CXX_FLAGS "-pthread")
