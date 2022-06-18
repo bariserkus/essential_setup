@@ -1,4 +1,4 @@
-# CMAKE
+## Building with CMAKE - Boost
 
 This is command line CMAKE version. The build directory is assumed to be `build`
 

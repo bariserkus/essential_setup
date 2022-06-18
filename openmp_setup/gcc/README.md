@@ -1,4 +1,4 @@
-# Building with GCC
+## Building with GCC - OpenMP
 
-$ `g++ -o testOpenMP.out main.cpp -lgomp -fopenmp`
+`$ g++ -o testOpenMP.out main.cpp -lgomp -fopenmp`
  

@@ -1,4 +1,4 @@
-# oneTBB CMAKE Files
+## Building with CMAKE - oneTBB
 
 ### Notes
 
@@ -29,7 +29,7 @@ and the long version:
 
     $ ./testtbb_long
     
-### CLion
+## Building with CLion - oneTBB
 
 Start CLion from the terminal instead using Applications shortcut. I was not able to make Clion work when it started from the Applications, in the case of oneTBB. CLion works from Applications when TBB is installed in the system:
 
