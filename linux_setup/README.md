@@ -1,5 +1,4 @@
 # Tools for Linux Setup
-----------------------
 
 ## Gnome Tweak Tools
 
@@ -201,7 +200,7 @@ Then,
 
 `sudo apt-get install libssl-dev`
 
-## Install the latest version of CMAKE
+## Install the Latest Version of CMAKE
 
 `sudo apt remove --purge --auto-remove cmake`
 
@@ -275,9 +274,9 @@ The `.bashrc` enviroment:
 
 ```
 ## CUDA variables
-#export CUDA_HOME="/usr/local/cuda"
-#export PATH="$PATH:$CUDA_HOME/bin"
-#export CUDACXX="/usr/local/cuda/bin/nvcc"  #This is for CMAKE to recognize CUDA compiler
+export CUDA_HOME="/usr/local/cuda"
+export PATH="$PATH:$CUDA_HOME/bin"
+export CUDACXX="/usr/local/cuda/bin/nvcc"  #This is for CMAKE to recognize CUDA compiler
 ```
 
 
