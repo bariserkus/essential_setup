@@ -198,73 +198,83 @@ Then,
 
 ## OpenSSL Libraries
 
-`sudo apt-get install libssl-dev`
+`$ sudo apt-get install libssl-dev`
 
 ## Install the Latest Version of CMAKE
 
-`sudo apt remove --purge --auto-remove cmake`
+The latest version of CMAKE is available in Snap Store:
 
-`sudo apt update && \`
+<https://snapcraft.io/install/cmake/ubuntu> 
 
-`sudo apt install -y software-properties-common lsb-release && \`
+and can be installed with:
 
-`sudo apt clean all`
+`$ sudo snap install cmake --classic`
 
-`wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null`
+Otherwise, it can be installed using PPA and apt:
 
-`sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"`
+`$ sudo apt remove --purge --auto-remove cmake`
 
-`sudo apt update`
+`$ sudo apt update && \`
 
-`sudo apt install cmake`
+`$ sudo apt install -y software-properties-common lsb-release && \`
+
+`$ sudo apt clean all`
+
+`$ wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null`
+
+`$ sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"`
+
+`$ sudo apt update`
+
+`$ sudo apt install cmake`
 
 ## Install Latest Stable GCC
 
 Ubuntu 20.04 has an older version of GCC, I guess, 9.4.0. To install the latest version, which I guess is 11.1.0, using PPA and `apt`:
 
-`sudo apt update`
+`$ sudo apt update`
 
-`sudo apt install build-essential`
+`$ sudo apt install build-essential`
 
-`sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test`
+`$ sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test`
 
-`sudo apt install gcc-11 g++-11`
+`$ sudo apt install gcc-11 g++-11`
 
 Check version:
 
-`g++ --version`
+`$ g++ --version`
 
 ## Configure Multiple Installations of GCC
 
 I assume, you have versions 9 and 11 of GCC:
 
-`sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 11`
+`$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 11`
 
-`sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 11`
+`$ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 11`
 
-`sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 9`
+`$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 9`
 
-`sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 9`
+`$ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 9`
 
 Then use the following to select the default version:
 
-`sudo update-alternatives --config gcc`
+`$ sudo update-alternatives --config gcc`
 
-`sudo update-alternatives --config g++`
+`$ sudo update-alternatives --config g++`
 
 If you made a mistake with the configuration, you can use to remove all configuration settings by
 
-`sudo update-alternatives --remove-all gcc`
+`$ sudo update-alternatives --remove-all gcc`
 
-`sudo update-alternatives --remove-all g++`
+`$ sudo update-alternatives --remove-all g++`
 
 Then you can configure them again with the correct settings.
 
 ## Install Boost Libraries
 
-`sudo apt-get update`
+`$ sudo apt-get update`
 
-`sudo apt install libboost-all-dev`
+`$ sudo apt install libboost-all-dev`
 
 ## Install CUDA Toolkit
 
@@ -278,6 +288,20 @@ export CUDA_HOME="/usr/local/cuda"
 export PATH="$PATH:$CUDA_HOME/bin"
 export CUDACXX="/usr/local/cuda/bin/nvcc"  #This is for CMAKE to recognize CUDA compiler
 ```
+
+## Install OpenCL Headers:
+
+OpenCL headers can be installed with:
+
+`$ sudo apt install opencl-headers`
+
+OpenCL headers are located at:
+
+`/usr/include/CL`
+
+A tool about OpenCL devices, clinfo can be installed with:
+
+`$ sudo apt install clinfo`
 
 
 
