@@ -1,3 +1,5 @@
+## Building with CMAKE - TBB
+
 ### Command Line CMAKE
 
 This is for build using the command line CMAKE. The build directory is assummed to be `build`.
@@ -6,7 +8,7 @@ First do cmake:
 
     $ mkdir build
     $ cd build
-    $ cmake
+    $ cmake ..
     
 Then, make in the `build` directory:
 
@@ -20,7 +22,7 @@ and the long version:
 
     $ ./testtbb_long
     
-### CLion
+### Using CLion
 
 You can start the CLion from Applications, instead of starting it off from the command line (as in the case of oneTBB).
 

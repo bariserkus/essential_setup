@@ -1,4 +1,4 @@
-# tbb_setup
+# Testing TBB or oneTBB Setup
 
 This repository provides minimal C++ examples for testing your TBB or oneTBB setup under Linux/Ubuntu using CMAKE command line, CLion CMAKE and GCC.
 
