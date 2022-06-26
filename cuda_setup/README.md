@@ -1,3 +1,3 @@
 # Testing CUDA Setup
 
-`nvcc -o main.out hellocuda.cu`
+`$ nvcc -o main.out hellocuda.cu`

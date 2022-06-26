@@ -8,6 +8,15 @@ The directories:
 
 `gcc` directory is for command line build with GCC.
 
+The enviroment settings in the `.bashrc` assuming Intel oneAPI is installed to the default directory:
+
+```
+## OneAPI variables
+source /opt/intel/oneapi/tbb/latest/env/vars.sh
+source /opt/intel/oneapi/dpl/latest/env/vars.sh
+source /opt/intel/oneapi/setvars.sh
+```
+
 
 [1]: https://www.intel.com/content/www/us/en/developer/tools/oneapi/onetbb.html "Intel oneTBB"
 [2]: https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit.html "Intel oneAPI Base Toolkit"

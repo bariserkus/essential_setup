@@ -303,6 +303,12 @@ A tool about OpenCL devices, clinfo can be installed with:
 
 `$ sudo apt install clinfo`
 
+## Install sysstat
+
+`$ sudo apt install sysstat`
+
+## Install cscope and screen using apt
+
 
 
 
