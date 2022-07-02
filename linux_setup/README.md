@@ -61,7 +61,7 @@ A tool to manage Gnome shell extensions.
 `gnome-extensions-app`
 
 
-## System Monitor
+## System Monitor baris er
 
 A Gnome shell extension to observe the system resources on the taskbar visually.
 
@@ -106,10 +106,10 @@ vitisws
 ├── RemoteSystemsTempFiles
 └── vitis_repo
     ├── test01
-    │   ├── test01
-    │   ├── test01_kernels
-    │   ├── test01_system
-    │   └── test01_system_hw_link
+    │   ├── test01
+    │   ├── test01_kernels
+    │   ├── test01_system
+    │   └── test01_system_hw_link
     └── test02
         ├── test01
         ├── test01_kernels
@@ -125,10 +125,10 @@ vitisws
 └── RemoteSystemsTempFiles
 vitis_repo
 ├── test01
-│   ├── test01
-│   ├── test01_kernels
-│   ├── test01_system
-│   └── test01_system_hw_link
+│   ├── test01
+│   ├── test01_kernels
+│   ├── test01_system
+│   └── test01_system_hw_link
 └── test02
     ├── test01
     ├── test01_kernels
@@ -309,8 +309,19 @@ A tool about OpenCL devices, clinfo can be installed with:
 
 ## Install cscope and screen using apt
 
+## Install emacs
 
+`$ sudo add-apt-repository ppa:kelleyk/emacs`
 
+`$ sudo add update`
+
+`$ sudo apt install emacs28-nativecomp`
+
+for version 28 with native compilation
+
+## Install vim
+
+vim can be installed using apt.
 
 
 

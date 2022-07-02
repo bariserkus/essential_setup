@@ -22,7 +22,7 @@ However, TeXStudio install tex-live system on top of the MikTeX system. You do n
 
 ## Jabref
 
-JAbref can be installed using Snap Store
+Jabref can be installed using Snap Store
 
 <https://snapcraft.io/install/jabref/ubuntu>
 
