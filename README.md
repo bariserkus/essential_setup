@@ -9,4 +9,3 @@ The contents are :
 * Linux Setup
 * OpenMP Setup
 * TBB & oneTBB Setup
-* OpenCL Setup
