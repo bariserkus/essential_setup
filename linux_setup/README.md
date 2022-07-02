@@ -345,6 +345,16 @@ for version 28 with native compilation
 
 vim can be installed using apt.
 
+## Markdown Tools
+
+Install:
+
+* pandoc
+* multimarkdown package: `apt install libtext-multimarkdown-perl`
+* cmark package: `apt install cmark`
+
+Install `ghostwriter` for markdown editor.
+
 
 
 
