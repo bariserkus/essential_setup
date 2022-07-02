@@ -1,5 +1,27 @@
 # Tools for Linux Setup
 
+## Git Setup
+
+Git can be installed using apt.
+
+Install Git Credential Manager as explained [here][1]:
+
+[1]: https://github.com/GitCredentialManager/git-credential-manager
+
+* download the deb package
+* install using `sudo dpkg`
+* `$ git-credential-manager-core configure`
+
+Set a way to store password as explaine [here][2]. 
+
+[2]: https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/credstores.md
+
+One way to do this in Linux (not secure) is
+
+`$ git config --global credential.credentialStore plaintext`
+
+Then GCM GUI will start automatically when git is called. Personal Accces Token should be used in the GCM GUI. Personal Access Token can be generated in GitHub using Settings -> Developer Settings.
+
 ## Gnome Tweak Tools
 
 A utility tool to configure Gnome desktop and such.
