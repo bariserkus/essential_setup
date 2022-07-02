@@ -83,7 +83,7 @@ A tool to manage Gnome shell extensions.
 `gnome-extensions-app`
 
 
-## System Monitor baris er
+## System Monitor
 
 A Gnome shell extension to observe the system resources on the taskbar visually.
 
