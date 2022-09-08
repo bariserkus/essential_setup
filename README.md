@@ -6,6 +6,8 @@ The contents are :
 
 * Boost Setup
 * CUDA Setup
+* LaTeX Setup
+* Linux Libraries Setup
 * Linux Setup
 * OpenMP Setup
 * TBB & oneTBB Setup
