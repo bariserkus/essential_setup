@@ -350,10 +350,10 @@ vim can be installed using apt.
 Install:
 
 * pandoc
-* multimarkdown package: `apt install libtext-multimarkdown-perl`
-* cmark package: `apt install cmark`
+* multimarkdown package: `sudo apt install libtext-multimarkdown-perl`
+* cmark package: `sudo apt install cmark`
 
-Install `ghostwriter` for markdown editor.
+Install `ghostwriter`for markdown editor.
 
 
 
