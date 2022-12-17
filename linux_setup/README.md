@@ -20,7 +20,7 @@ One way to do this in Linux (not secure) is
 
 `$ git config --global credential.credentialStore plaintext`
 
-Then GCM GUI will start automatically when git is called. Personal Accces Token should be used in the GCM GUI. Personal Access Token can be generated in GitHub using Settings -> Developer Settings.
+Then GCM GUI will start automatically when git is called. Personal Accces Token should be used in the GCM GUI. Personal Access Token can be generated in GitHub using `Settings` -> `Developer Settings`.
 
 ## Gnome Tweak Tools
 
