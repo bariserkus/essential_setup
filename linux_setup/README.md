@@ -20,7 +20,7 @@ One way to do this in Linux (not secure) is
 
 `$ git config --global credential.credentialStore plaintext`
 
-Then GCM GUI will start automatically when git is called. Personal Accces Token should be used in the GCM GUI. Personal Access Token can be generated in GitHub using Settings -> Developer Settings.
+Then GCM GUI will start automatically when git is called. Personal Accces Token should be used in the GCM GUI. Personal Access Token can be generated in GitHub using `Settings` -> `Developer Settings`.
 
 ## Gnome Tweak Tools
 
@@ -110,7 +110,7 @@ Eclipse for Intel oneAPI is an older version. Eclipse for NVidia can be a newer 
 
 ## Vitis, Git and Multiple Projects in Eclipse
 
-If you want use Git for you Vitis project, this is what I recommended.
+If you want use Git for you Vitis project, this is what I recommend.
 
 First of all, you are probably aware of that Vitis creates four sub-projects when you create a Vector Add example. These are not originally located under one folder and they are all directly under the workspace folder. For example if you create a `test01` project with Vitis Vector Add wizard, Vitis creates four project folders:
 
@@ -140,7 +140,7 @@ vitisws
 
 ```
 
-There is an alternate scenario that `vitis_repo` is places out of the Vitis workspace directory. You can do both using Vitis-Eclipse Share Team option.
+There is an alternate scenario that `vitis_repo` is placed out of the Vitis workspace directory. You can do both using Vitis-Eclipse Share Team option.
 
 ```
 vitisws
@@ -350,8 +350,8 @@ vim can be installed using apt.
 Install:
 
 * pandoc
-* multimarkdown package: `apt install libtext-multimarkdown-perl`
-* cmark package: `apt install cmark`
+* multimarkdown package: `sudo apt install libtext-multimarkdown-perl`
+* cmark package: `sudo apt install cmark`
 
 Install `ghostwriter` for markdown editor using ppa and apt. Don't use snap as it has the older version.
 
