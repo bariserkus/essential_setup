@@ -329,7 +329,7 @@ A tool about OpenCL devices, clinfo can be installed with:
 
 `$ sudo apt install sysstat`
 
-## Install cscope and screen using apt
+## Install `cscope` and `screen` using apt
 
 ## Install emacs
 
@@ -353,7 +353,7 @@ Install:
 * multimarkdown package: `apt install libtext-multimarkdown-perl`
 * cmark package: `apt install cmark`
 
-Install `ghostwriter` for markdown editor.
+Install `ghostwriter` for markdown editor using ppa and apt. Don't use snap as it has the older version.
 
 
 
