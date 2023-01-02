@@ -2,6 +2,14 @@
 
 Follow the instructions on the TexLive web page. You can use GUI installer. Install full tex-live.
 
+Give user access to the TeXLive folder:
+
+`$ sudo chown -R "$USER" /usr/local/texlive`
+
+TeXLive Manager GUI:
+
+`$ tlmgr --gui`
+
 ## TeXStudio
 
 TeXStudio is frequently updated, therefore Snap Store installation is not recommended. Use PPA and apt install, instead:
@@ -30,13 +38,3 @@ Install LyX using PPA.
 Add a new converter to LyX: PDF (graphics) -> PNG
 
 `convert -density 200 -trim -quality 100 -sharpen 0x1.0 $$i -colorspace RGB $$o`
-
-## TeXLive
-
-Give user access to the TeXLive folder:
-
-`$ sudo chown -R "$USER" /usr/local/texlive`
-
-TeXLive Manager GUI:
-
-`$ tlmgr --gui`
