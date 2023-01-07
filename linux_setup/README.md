@@ -355,6 +355,7 @@ Install:
 
 Install `ghostwriter` for markdown editor using ppa and apt. Don't use snap as it has the older version.
 
+## Install `xclip` using apt
 
 
 
