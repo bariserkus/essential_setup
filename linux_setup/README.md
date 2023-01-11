@@ -310,6 +310,8 @@ or you can go to the `/usr/include/boost` folder and check the file `version.hpp
 
 ## Install Boost Libraries using `bootstrap`
 
+Install MPICH.
+
 First get the boost package. In the following example version 1.81 is downloaded:
 
 `$ wget http://downloads.sourceforge.net/project/boost/boost/1.81.0/boost_1_81_0.tar.gz`
@@ -321,6 +323,8 @@ Unzip the package:
 Enter to the installation directory:
 
 `cd boost_1_81_0`
+
+Edit `project-config.jam` and add the following line: `using mpi ;`.
 
 To install Boost to `/usr/` folder:
 
@@ -335,6 +339,8 @@ Get the core numbers for fast build:
 Install Boost:
 
 `$ sudo ./b2 --with=all -j $cpuCores install`
+
+Ignore the warnings about use of ``auto_ptr`.
 
 Check the installed version:
 
