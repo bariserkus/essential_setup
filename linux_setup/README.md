@@ -292,11 +292,71 @@ If you made a mistake with the configuration, you can use to remove all configur
 
 Then you can configure them again with the correct settings.
 
-## Install Boost Libraries
+## Install MPICH
+
+`$ sudo apt install mpich`
+
+## Install Boost Libraries using `apt`
 
 `$ sudo apt update`
 
 `$ sudo apt install libboost-all-dev`
+
+You can get current version of installed Boost Libraries:
+
+`$ dpkg -s libboost-dev | grep 'Version'`
+
+or you can go to the `/usr/include/boost` folder and check the file `version.hpp`.
+
+## Install Boost Libraries using `bootstrap`
+
+Install MPICH.
+
+First get the boost package. In the following example version 1.81 is downloaded:
+
+`$ wget http://downloads.sourceforge.net/project/boost/boost/1.81.0/boost_1_81_0.tar.gz`
+
+Unzip the package:
+
+`$ tar -zxvf boost_1_81_0.tar.gz`
+
+Enter to the installation directory:
+
+`cd boost_1_81_0`
+
+Edit `project-config.jam` and add the following line: `using mpi ;`.
+
+To install Boost to `/usr/` folder:
+
+`$ ./bootstrap.sh --prefix=/usr/`
+
+This will place the header files (include files) to `\usr\icnlude\boost` folder and place the boost library files (eg: `libboost_serialization.so.1.81.0`) to `\usr\lib` folder.
+
+Get the core numbers for fast build:
+
+``$ cpuCores=`cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}'` ``
+
+Install Boost:
+
+`$ sudo ./b2 --with=all -j $cpuCores install`
+
+Ignore the warnings about use of ``auto_ptr`.
+
+Check the installed version:
+
+`$ cat /usr/include/boost/version.hpp | grep "BOOST_VERSION"`
+
+`$ cat /usr/include/boost/version.hpp | grep "BOOST_LIB_VERSION"`
+
+## Uninstall Boost Library
+`$ sudo apt-get update`
+
+`$ sudo apt-get -y --purge remove libboost-all-dev libboost-doc libboost-dev`
+
+`$ sudo rm -f /usr/lib/libboost_*`
+
+`$ sudo apt-get -y install build-essential g++ python-dev autotools-dev libicu-dev libbz2-dev`
+
 
 ## Install CUDA Toolkit
 
@@ -355,6 +415,7 @@ Install:
 
 Install `ghostwriter` for markdown editor using ppa and apt. Don't use snap as it has the older version.
 
+## Install `xclip` using apt
 
 
 
