@@ -294,7 +294,7 @@ Then you can configure them again with the correct settings.
 
 ## Install Boost Libraries
 
-`$ sudo apt-get update`
+`$ sudo apt update`
 
 `$ sudo apt install libboost-all-dev`
 
