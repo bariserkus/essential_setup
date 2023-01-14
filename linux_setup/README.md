@@ -324,8 +324,6 @@ Enter to the installation directory:
 
 `cd boost_1_81_0`
 
-Edit `project-config.jam` and add the following line: `using mpi ;`.
-
 To install Boost to `/usr/` folder:
 
 `$ ./bootstrap.sh --prefix=/usr/`
