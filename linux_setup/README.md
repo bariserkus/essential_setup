@@ -332,6 +332,8 @@ To install Boost to `/usr/` folder:
 
 This will place the header files (include files) to `\usr\icnlude\boost` folder and place the boost library files (eg: `libboost_serialization.so.1.81.0`) to `\usr\lib` folder.
 
+It will also generate the `project-config.jam` file. Edit this file and add the following line to the end of file: `using mpi ;`.
+
 Get the core numbers for fast build:
 
 ``$ cpuCores=`cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}'` ``
@@ -357,6 +359,9 @@ Check the installed version:
 
 `$ sudo apt-get -y install build-essential g++ python-dev autotools-dev libicu-dev libbz2-dev`
 
+## Install OpenGL Libraries
+
+`$ sudo apt-get install freeglut3-dev`
 
 ## Install CUDA Toolkit
 
