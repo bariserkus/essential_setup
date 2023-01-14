@@ -340,7 +340,7 @@ Install Boost:
 
 `$ sudo ./b2 --with=all -j $cpuCores install`
 
-Ignore the warnings about use of ``auto_ptr`.
+Ignore the warnings about use of `auto_ptr`.
 
 Check the installed version:
 
