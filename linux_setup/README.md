@@ -220,7 +220,7 @@ Then,
 
 ## OpenSSL Libraries
 
-`$ sudo apt-get install libssl-dev`
+`$ sudo apt install libssl-dev`
 
 ## Install the Latest Version of CMAKE
 
@@ -298,7 +298,7 @@ Then you can configure them again with the correct settings.
 
 ## Install Boost Libraries using `apt`
 
-`$ sudo apt-get update`
+`$ sudo apt update`
 
 `$ sudo apt install libboost-all-dev`
 
@@ -338,6 +338,8 @@ To install Boost to a different folder, e.g `/home/user_name/boost/` folder:
 
 This will place the header files (include files) to `/home/user_name/boost/include/boost` folder and place the boost library files (eg: `libboost_serialization.so.1.81.0`) to `/home/user_name/boost/lib` folder.
 
+It will also generate the `project-config.jam` file. Edit this file and add the following line to the end of file: `using mpi ;`.
+
 Get the core numbers for fast build:
 
 ``$ cpuCores=`cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}'` ``
@@ -360,14 +362,17 @@ Check the installed version:
 `$ cat /usr/include/boost/version.hpp | grep "BOOST_LIB_VERSION"`
 
 ## Uninstall Boost Library
-`$ sudo apt-get update`
+`$ sudo apt update`
 
-`$ sudo apt-get -y --purge remove libboost-all-dev libboost-doc libboost-dev`
+`$ sudo apt -y --purge remove libboost-all-dev libboost-doc libboost-dev`
 
 `$ sudo rm -f /usr/lib/libboost_*`
 
-`$ sudo apt-get -y install build-essential g++ python-dev autotools-dev libicu-dev libbz2-dev`
+`$ sudo apt -y install build-essential g++ python-dev autotools-dev libicu-dev libbz2-dev`
 
+## Install OpenGL Libraries
+
+`$ sudo apt install freeglut3-dev`
 
 ## Install CUDA Toolkit
 
