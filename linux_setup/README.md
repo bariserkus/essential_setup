@@ -324,23 +324,34 @@ Enter to the installation directory:
 
 `cd boost_1_81_0`
 
-Edit `project-config.jam` and add the following line: `using mpi ;`.
+Edit `project-config.jam` and add the following line: `using mpi ;`(mind the spaces).
 
 To install Boost to `/usr/` folder:
 
 `$ ./bootstrap.sh --prefix=/usr/`
 
-This will place the header files (include files) to `\usr\icnlude\boost` folder and place the boost library files (eg: `libboost_serialization.so.1.81.0`) to `\usr\lib` folder.
+This will place the header files (include files) to `/usr/include/boost` folder and place the boost library files (eg: `libboost_serialization.so.1.81.0`) to `/usr/lib` folder.
+
+To install Boost to a different folder, e.g `/home/user_name/boost/` folder:
+
+`$ ./bootstrap.sh --prefix=/home/user_name/boost/`
+
+This will place the header files (include files) to `/home/user_name/boost/include/boost` folder and place the boost library files (eg: `libboost_serialization.so.1.81.0`) to `/home/user_name/boost/lib` folder.
 
 Get the core numbers for fast build:
 
 ``$ cpuCores=`cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}'` ``
 
-Install Boost:
+Install Boost to `/usr` folder using `sudo`:
 
-`$ sudo ./b2 --with=all -j $cpuCores install`
+`$ sudo ./b2 --with=all -j $cpuCores install --prefix=/usr/`
 
-Ignore the warnings about use of ``auto_ptr`.
+To install Boost to a different folder, e.g. `/home/user_name/boost/`:
+
+`$ ./b2 --with=all -j $cpuCores install --prefix=/home/user_name/boost/`
+
+
+Ignore the warnings about use of `auto_ptr`.
 
 Check the installed version:
 
