@@ -1,5 +1,13 @@
 # Tools for Linux Setup
 
+## Auto Complete Command
+Create a file `~/.inputrc` with the content:
+
+```
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+```
+
 ## Git Setup
 
 Git can be installed using apt.
