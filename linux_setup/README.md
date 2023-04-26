@@ -324,8 +324,6 @@ Enter to the installation directory:
 
 `cd boost_1_81_0`
 
-Edit `project-config.jam` and add the following line: `using mpi ;`(mind the spaces).
-
 To install Boost to `/usr/` folder:
 
 `$ ./bootstrap.sh --prefix=/usr/`
@@ -340,6 +338,12 @@ This will place the header files (include files) to `/home/user_name/boost/inclu
 
 It will also generate the `project-config.jam` file. Edit this file and add the following line to the end of file: `using mpi ;`.
 
+If you want to use a toolset other than `gcc` (e.g. `clang`), then add the following option:
+
+`--with-toolset=clang`
+
+This will set the default toolset to `clang` in the `project-config.jam` file.
+
 Get the core numbers for fast build:
 
 ``$ cpuCores=`cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}'` ``
@@ -352,6 +356,9 @@ To install Boost to a different folder, e.g. `/home/user_name/boost/`:
 
 `$ ./b2 --with=all -j $cpuCores install --prefix=/home/user_name/boost/`
 
+If you want to use a toolset other than `gcc` (e.g. `clang`), then add the following option:
+
+`toolset=clang`
 
 Ignore the warnings about use of `auto_ptr`.
 
