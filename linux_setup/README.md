@@ -448,6 +448,15 @@ Install `ghostwriter` for markdown editor using ppa and apt. Don't use snap as i
 
 ## Install `xclip` using apt
 
+## Adding a Custom Directory to Library Path
+
+Add this to `.bashrc` file and source it.
+
+`export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/custom/path/`
+
+Check if the directory is added correctly:
+
+`echo $LD_LIBRARY_PATH`
 
 
 
