@@ -448,15 +448,29 @@ Install `ghostwriter` for markdown editor using ppa and apt. Don't use snap as i
 
 ## Install `xclip` using apt
 
-## Adding a Custom Directory to Library Path
+## Adding a Custom Directory to Include Library Path
 
-Add this to `.bashrc` file and source it.
+`LIBRARY_PATH` is used by gcc before compilation to search directories containing static and shared libraries that need to be linked to your program.
 
+`LD_LIBRARY_PATH` is used by your program to search directories containing shared libraries after it has been successfully compiled and linked.
+
+Your libraries can be static or shared. If it is static then the code is copied over into your program and you don't need to search for the library after your program is compiled and linked. If your library is shared then it needs to be dynamically linked to your program and that's when LD_LIBRARY_PATH comes into play.
+
+Add this to `.bashrc` file and source it:
+
+`export LIBRARY_PATH=$LIBRARY_PATH:/your/custom/path/`
 `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/custom/path/`
 
 Check if the directory is added correctly:
 
+`echo $LIBRARY_PATH`
 `echo $LD_LIBRARY_PATH`
+
+Similarly, add custom include path for C and C++:
+
+`export C_INCLUDE_PATH=$C_INCLUDE_PATH:/your/custom/path/`
+`export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/your/custom/path/`
+
 
 
 
