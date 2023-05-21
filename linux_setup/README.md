@@ -471,6 +471,26 @@ Similarly, add custom include path for C and C++:
 `export C_INCLUDE_PATH=$C_INCLUDE_PATH:/your/custom/path/`
 `export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/your/custom/path/`
 
+## Git Credentials
+
+Update the URL of origin remote using SSH instead of HTTPS;
+
+`git remote set-url origin git@github.com:username/repo.git`
+
+or
+
+Make Git store the username and password and it will never ask for them.
+
+`git config --global credential.helper store`
+
+Save the username and password for a session (cache it);
+
+`git config --global credential.helper cache`
+
+You can also set a timeout for the above setting
+
+`git config --global credential.helper 'cache --timeout=600'`
+
 
 
 
