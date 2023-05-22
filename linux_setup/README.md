@@ -493,12 +493,18 @@ You can also set a timeout for the above setting
 
 ## Upgrade python
 
+For Ubuntu 20.04, the default version of Python3 is 3.8. Most of the GTK programs (e.g. installer, updater) need Python 3.8 and they will not work with a newer version.
+
+One way to workaround for may be to tell the GTK programs to use Python 3.8 even if a newer version is the default one. For example:
 
 `$sudo vim /usr/bin/gnome-terminal`
 
 Change `#!/usr/bin/python3` to `#!/usr/bin/python3.8`
 
-Do the same for `/usr/bin/software-properties-gtk`
+Do the same for `/usr/bin/software-properties-gtk` and `/usr/bin/update-manager`
+
+However, in my case the update manager did not start properly. so I switch shebang back to `#!/usr/bin/python3` for all these programs.
+
 
 
 
