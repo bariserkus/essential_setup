@@ -491,6 +491,15 @@ You can also set a timeout for the above setting
 
 `git config --global credential.helper 'cache --timeout=600'`
 
+## Upgrade python
+
+
+`$sudo vim /usr/bin/gnome-terminal`
+
+Change `#!/usr/bin/python3` to `#!/usr/bin/python3.8`
+
+Do the same for `/usr/bin/software-properties-gtk`
+
 
 
 
