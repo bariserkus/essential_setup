@@ -8,6 +8,6 @@ The contents are :
 * CUDA Setup
 * LaTeX Setup
 * Linux Libraries Setup
-* Linux Setup
+* Linux Setup for Productivity
 * OpenMP Setup
 * TBB & oneTBB Setup
