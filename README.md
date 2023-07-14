@@ -1,6 +1,6 @@
 # essential_setup
 
-Setup Procedures of Essential Tools for Ubuntu Linux
+Setup Procedures of Essential Tools for Ubuntu Linux & Programming
 
 The contents are :
 
