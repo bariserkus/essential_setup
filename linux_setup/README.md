@@ -416,13 +416,13 @@ A tool about OpenCL devices, clinfo can be installed with:
 
 `$ sudo apt install clinfo`
 
-## Install sysstat
+## Install `sysstat`
 
 `$ sudo apt install sysstat`
 
-## Install `cscope` and `screen` using apt
+## Install `cscope` and `screen` using `apt`
 
-## Install emacs
+## Install `emacs`
 
 `$ sudo add-apt-repository ppa:kelleyk/emacs`
 
@@ -432,7 +432,7 @@ A tool about OpenCL devices, clinfo can be installed with:
 
 for version 28 with native compilation
 
-## Install vim
+## Install `vim`
 
 vim can be installed using apt.
 
