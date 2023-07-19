@@ -40,6 +40,12 @@ A utility tool to configure Gnome desktop and such.
 
 Note that you can activate already-installed extentions from here.
 
+## Gnome `dconf-editor`
+
+A utility to configure GNOME.
+
+You can install `dconf-editor` using `apt`.
+
 
 ## Gnome Shell Extensions
 
