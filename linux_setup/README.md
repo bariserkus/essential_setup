@@ -1,5 +1,24 @@
 # Tools for Linux Setup
 
+## Install `spyder`
+
+To install spyder, first we need to create a virtual environment using
+```
+$ python3 -m venv spyder-env
+```
+
+and activate this environment using
+```
+$ source spyder-env/bin/activate
+```
+
+Install using `pip` after activation using
+```
+$ pip install spyder numpy scipy pandas matplotlib sympy cython
+```
+
+After Ubuntu 23.04, direct use of pip is prohibited. So, virtual environments are suggested or use of `pipx` is suggested.
+
 ## Auto Complete Command
 Create a file `~/.inputrc` with the content:
 
@@ -24,9 +43,9 @@ Set a way to store password as explaine [here][2].
 
 [2]: https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/credstores.md
 
-One way to do this in Linux (not secure) is
+One way to do this in Linux is
 
-`$ git config --global credential.credentialStore plaintext`
+`$ git config --global credential.credentialStore cache`
 
 Then GCM GUI will start automatically when git is called. Personal Accces Token should be used in the GCM GUI. Personal Access Token can be generated in GitHub using `Settings` -> `Developer Settings`.
 
