@@ -1,18 +1,118 @@
 # Tools for Linux Setup
 
+These suggestions are mostly for Ubuntu 20.04, 22.04 and 23.04. However, some of them will not work with 23.04 as of today (September, 2023).
+
+## Install TeXLive
+
+There is a quick installation guide [here][a].
+
+[a]: https://tug.org/texlive/quickinstall.html
+
+Make sure necessary Perl packages installed:
+
+```
+$ perl -MLWP -le "print(LWP->VERSION)"
+```
+
+LWP is generally installed with standard Ubuntu installations. If not installed, visit [this][c] web page.
+
+[c]: https://lwp.interglacial.com/ch01_03.htm
+
+Install `perl-tk` package using `apt`.
+
+Download the latest version of `install-tl` form [this][b] web page.
+
+[b]: https://mirror.dogado.de/tex-archive/systems/texlive/tlnet/
+
+Start installer using:
+```
+$ sudo perl install-tl -gui
+```
+
+Suggest to install full system.
+
+TeXlive is installed to `\usr\local\texlive`. For upgrades and other future modifications, the folder is not writable. There are several ways suggested to fix this. I prefer to give access to this folder using
+
+```
+$ sudo chmod -R 777 /usr/local/texlive
+```
+
+After installation you can manage the TeX system using `tlmgr` command.
+
+Custom and user packages should be placed into the following folder:
+
+```
+/usr/local/texlive/texmf-local/tex/latex
+```
+
+Note that 2023 version of TeXlive comes with Biblatex and Babel packages, and they do not need to be installed seperately.
+
+## Install LyX
+
+LyX can be installed using the Snap.
+
+Start LyX using the terminal command line, instead of directly starting from the application list.
+
+Fix the issue with the security policy of ghostscript as explained [here][d].
+
+[d]: https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion
+
+Essentially check the `gs` version with
+
+```
+$ gs --version
+```
+
+Make sure the version is >= 9.24. If yes, just remove this whole following section from `/etc/ImageMagick-6/policy.xml`:
+
+```
+<!-- disable ghostscript format types -->
+<policy domain="coder" rights="none" pattern="PS" />
+<policy domain="coder" rights="none" pattern="PS2" />
+<policy domain="coder" rights="none" pattern="PS3" />
+<policy domain="coder" rights="none" pattern="EPS" />
+<policy domain="coder" rights="none" pattern="PDF" />
+<policy domain="coder" rights="none" pattern="XPS" />
+```
+
+Make sure ImageMagick is installed. This a very standard package available in standard Ubuntu installations.
+
+Add the PDF viewer to LyX:
+
+* Go to Tools->Preferences->File Handling->Converters`
+* Create PDF to PNG converter using the following converter command:
+
+`convert -density 200 -trim -quality 100 -colorspace RGB -sharpen 0x1.0 $$i $$o`
+
+
+## Install TeXStudio
+
+Install TeXStudio using the PPA:
+
+```
+$ sudo add-apt-repository ppa:sunderme/texstudio
+$ sudo apt update
+$ sudo apt install texstudio
+
+```
+
+
 ## Install `spyder`
 
 To install spyder, first we need to create a virtual environment using
+
 ```
 $ python3 -m venv spyder-env
 ```
 
 and activate this environment using
+
 ```
 $ source spyder-env/bin/activate
 ```
 
 Install using `pip` after activation using
+
 ```
 $ pip install spyder numpy scipy pandas matplotlib sympy cython
 ```
@@ -20,6 +120,7 @@ $ pip install spyder numpy scipy pandas matplotlib sympy cython
 After Ubuntu 23.04, direct use of pip is prohibited. So, virtual environments are suggested or use of `pipx` is suggested.
 
 ## Auto Complete Command
+
 Create a file `~/.inputrc` with the content:
 
 ```
@@ -471,7 +572,7 @@ Install:
 
 Install `ghostwriter` for markdown editor using ppa and apt. Don't use snap as it has the older version.
 
-## Install `xclip` using apt
+## Install `xclip` using `apt`
 
 ## Adding a Custom Directory to Include Library Path
 
@@ -516,7 +617,7 @@ You can also set a timeout for the above setting
 
 `git config --global credential.helper 'cache --timeout=600'`
 
-## Upgrade python
+## Upgrade `python`
 
 For Ubuntu 20.04, the default version of Python3 is 3.8. Most of the GTK programs (e.g. installer, updater) need Python 3.8 and they will not work with a newer version.
 
