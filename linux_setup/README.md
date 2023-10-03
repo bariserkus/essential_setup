@@ -2,122 +2,34 @@
 
 These suggestions are mostly for Ubuntu 20.04, 22.04 and 23.04. However, some of them will not work with 23.04 as of today (September, 2023).
 
-## Install TeXLive
 
-There is a quick installation guide [here][a].
+## Creating Python Environments 
 
-[a]: https://tug.org/texlive/quickinstall.html
-
-Make sure necessary Perl packages installed:
+Create a virtual environment using
 
 ```
-$ perl -MLWP -le "print(LWP->VERSION)"
-```
-
-LWP is generally installed with standard Ubuntu installations. If not installed, visit [this][c] web page.
-
-[c]: https://lwp.interglacial.com/ch01_03.htm
-
-Install `perl-tk` package using `apt`.
-
-Download the latest version of `install-tl` form [this][b] web page.
-
-[b]: https://mirror.dogado.de/tex-archive/systems/texlive/tlnet/
-
-Start installer using:
-```
-$ sudo perl install-tl -gui
-```
-
-Suggest to install full system.
-
-TeXlive is installed to `\usr\local\texlive`. For upgrades and other future modifications, the folder is not writable. There are several ways suggested to fix this. I prefer to give access to this folder using
-
-```
-$ sudo chmod -R 777 /usr/local/texlive
-```
-
-After installation you can manage the TeX system using `tlmgr` command.
-
-Custom and user packages should be placed into the following folder:
-
-```
-/usr/local/texlive/texmf-local/tex/latex
-```
-
-Note that 2023 version of TeXlive comes with Biblatex and Babel packages, and they do not need to be installed seperately.
-
-## Install LyX
-
-LyX can be installed using the Snap.
-
-Start LyX using the terminal command line, instead of directly starting from the application list.
-
-Fix the issue with the security policy of ghostscript as explained [here][d].
-
-[d]: https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion
-
-Essentially check the `gs` version with
-
-```
-$ gs --version
-```
-
-Make sure the version is >= 9.24. If yes, just remove this whole following section from `/etc/ImageMagick-6/policy.xml`:
-
-```
-<!-- disable ghostscript format types -->
-<policy domain="coder" rights="none" pattern="PS" />
-<policy domain="coder" rights="none" pattern="PS2" />
-<policy domain="coder" rights="none" pattern="PS3" />
-<policy domain="coder" rights="none" pattern="EPS" />
-<policy domain="coder" rights="none" pattern="PDF" />
-<policy domain="coder" rights="none" pattern="XPS" />
-```
-
-Make sure ImageMagick is installed. This a very standard package available in standard Ubuntu installations.
-
-Add the PDF viewer to LyX:
-
-* Go to Tools->Preferences->File Handling->Converters`
-* Create PDF to PNG converter using the following converter command:
-
-`convert -density 200 -trim -quality 100 -colorspace RGB -sharpen 0x1.0 $$i $$o`
-
-
-## Install TeXStudio
-
-Install TeXStudio using the PPA:
-
-```
-$ sudo add-apt-repository ppa:sunderme/texstudio
-$ sudo apt update
-$ sudo apt install texstudio
-
-```
-
-
-## Install `spyder`
-
-To install spyder, first we need to create a virtual environment using
-
-```
-$ python3 -m venv spyder-env
+$ python3 -m venv myenv
 ```
 
 and activate this environment using
 
 ```
-$ source spyder-env/bin/activate
+$ source myenv/bin/activate
 ```
+
+## Install `spyder`
+
+Note that after Ubuntu 23.04, direct use of pip is prohibited. Two methods are suggested: (a) virtual environments or (b) use of `pipx` is suggested. In the following we use virtual environment method:
+
+First create a Python environment and activate it.
 
 Install using `pip` after activation using
 
 ```
-$ pip install spyder numpy scipy pandas matplotlib sympy cython
+$ (myenv) pip install spyder numpy scipy pandas matplotlib sympy cython
 ```
 
-After Ubuntu 23.04, direct use of pip is prohibited. So, virtual environments are suggested or use of `pipx` is suggested.
+Start spyder from the virtual environment usig the CLI.
 
 ## Auto Complete Command
 
@@ -130,13 +42,13 @@ Create a file `~/.inputrc` with the content:
 
 ## Git Setup
 
-Git can be installed using apt.
+Git can be installed using `apt`.
 
 Install Git Credential Manager as explained [here][1]:
 
 [1]: https://github.com/GitCredentialManager/git-credential-manager
 
-* download the deb package
+* download the deb package file of GCM
 * install using `sudo dpkg`
 * `$ git-credential-manager-core configure`
 
@@ -149,6 +61,28 @@ One way to do this in Linux is
 `$ git config --global credential.credentialStore cache`
 
 Then GCM GUI will start automatically when git is called. Personal Accces Token should be used in the GCM GUI. Personal Access Token can be generated in GitHub using `Settings` -> `Developer Settings`.
+
+
+## Git Credentials (Old)
+
+Update the URL of origin remote using SSH instead of HTTPS;
+
+`git remote set-url origin git@github.com:username/repo.git`
+
+or
+
+Make Git store the username and password and it will never ask for them.
+
+`git config --global credential.helper store`
+
+Save the username and password for a session (cache it);
+
+`git config --global credential.helper cache`
+
+You can also set a timeout for the above setting
+
+`git config --global credential.helper 'cache --timeout=600'`
+
 
 ## Gnome Tweak Tools
 
@@ -168,6 +102,8 @@ You can install `dconf-editor` using `apt`.
 
 
 ## Gnome Shell Extensions
+
+Note that the following may not work for Ubuntu 23.04.
 
 Small add-ons for Gnome to make it more practical and efficient.
 
@@ -218,6 +154,8 @@ A tool to manage Gnome shell extensions.
 
 
 ## System Monitor
+
+Note that the following may not work for Ubuntu 23.04.
 
 A Gnome shell extension to observe the system resources on the taskbar visually.
 
@@ -528,7 +466,7 @@ export PATH="$PATH:$CUDA_HOME/bin"
 export CUDACXX="/usr/local/cuda/bin/nvcc"  #This is for CMAKE to recognize CUDA compiler
 ```
 
-## Install OpenCL Headers:
+## Install OpenCL Headers
 
 OpenCL headers can be installed with:
 
@@ -538,7 +476,7 @@ OpenCL headers are located at:
 
 `/usr/include/CL`
 
-A tool about OpenCL devices, clinfo can be installed with:
+A tool about OpenCL devices, `clinfo` can be installed with:
 
 `$ sudo apt install clinfo`
 
@@ -547,6 +485,14 @@ A tool about OpenCL devices, clinfo can be installed with:
 `$ sudo apt install sysstat`
 
 ## Install `cscope` and `screen` using `apt`
+
+More infor on cscope is here:
+
+<https://cscope.sourceforge.net/>
+
+More info on screen is here:
+
+<https://linuxize.com/post/how-to-use-linux-screen/>
 
 ## Install `emacs`
 
@@ -563,20 +509,30 @@ for version 28 with native compilation
 vim can be installed using apt.
 
 ## Markdown Tools
+Ghostwriter is a great tool for markdown editing. Ghostwriter requires the following packages as prerequiste:
 
-Install:
+```
+$ sudo apt install g++ qtbase5-dev libqt5svg5-dev qtmultimedia5-dev qtwebengine5-dev pkg-config libqt5concurrent5 qttools5-dev-tools qttools5-dev libkf5coreaddons-dev libkf5xmlgui-dev libkf5configwidgets-dev libkf5sonnet-dev libkf5doctools5 libkf5doctools-dev cmake extra-cmake-modules libhunspell-dev
+```
 
-* pandoc
+Also install seperately the following:
+
+* pandoc package: `sudo apt install pandoc`
 * multimarkdown package: `sudo apt install libtext-multimarkdown-perl`
 * cmark package: `sudo apt install cmark`
 
-Install `ghostwriter` for markdown editor using ppa and apt. Don't use snap as it has the older version.
+For Ubuntu 20.04, 22.04, install `ghostwriter` for markdown editor using ppa and apt. Don't use snap as it has the older version.
+
+For Ubuntu 23.04 install Ghostwriter using Snap Store, as it has its own specific version (23.04.xx).
+
 
 ## Install `xclip` using `apt`
 
+Note that Ubuntu 23.04 has the clip tool embedded into the settings parts of the  taskbar.
+
 ## Adding a Custom Directory to Include Library Path
 
-`LIBRARY_PATH` is used by gcc before compilation to search directories containing static and shared libraries that need to be linked to your program.
+`LIBRARY_PATH` is used by `gcc` or `g++` before compilation to search directories containing static and shared libraries that need to be linked to your program.
 
 `LD_LIBRARY_PATH` is used by your program to search directories containing shared libraries after it has been successfully compiled and linked.
 
@@ -597,27 +553,14 @@ Similarly, add custom include path for C and C++:
 `export C_INCLUDE_PATH=$C_INCLUDE_PATH:/your/custom/path/`
 `export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/your/custom/path/`
 
-## Git Credentials
-
-Update the URL of origin remote using SSH instead of HTTPS;
-
-`git remote set-url origin git@github.com:username/repo.git`
-
-or
-
-Make Git store the username and password and it will never ask for them.
-
-`git config --global credential.helper store`
-
-Save the username and password for a session (cache it);
-
-`git config --global credential.helper cache`
-
-You can also set a timeout for the above setting
-
-`git config --global credential.helper 'cache --timeout=600'`
 
 ## Upgrade `python`
+
+**ATTENTION**
+
+This is quite risky and will probably break your Linux!!! I recommend not to use it!!!
+
+**ATTENTION**
 
 For Ubuntu 20.04, the default version of Python3 is 3.8. Most of the GTK programs (e.g. installer, updater) need Python 3.8 and they will not work with a newer version.
 

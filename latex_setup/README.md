@@ -1,40 +1,128 @@
-## TexLive Setup
+# LaTeX Tools
 
-Follow the instructions on the TexLive web page. You can use GUI installer. Install full tex-live.
+## Install TeXLive
 
-Give user access to the TeXLive folder:
+There is a quick installation guide [here][a].
 
+[a]: https://tug.org/texlive/quickinstall.html
+
+Make sure necessary Perl packages installed:
+
+```
+$ perl -MLWP -le "print(LWP->VERSION)"
+```
+
+LWP is generally installed with standard Ubuntu installations. If not installed, visit [this][c] web page.
+
+[c]: https://lwp.interglacial.com/ch01_03.htm
+
+Install `perl-tk` package using `apt`.
+
+Download the latest version of `install-tl` form [this][b] web page.
+
+[b]: https://mirror.dogado.de/tex-archive/systems/texlive/tlnet/
+
+Start installer using:
+```
+$ sudo perl install-tl -gui
+```
+
+Suggest to install full system.
+
+TeXlive is installed to `\usr\local\texlive`. For upgrades and other future modifications, the folder is not writable. There are several ways suggested to fix this. I prefer to give access to this folder using
+
+```
+$ sudo chmod -R 777 /usr/local/texlive
+```
+
+or
+
+```
 `$ sudo chown -R "$USER" /usr/local/texlive`
+```
 
-TeXLive Manager GUI:
 
-`$ tlmgr --gui`
+After installation you can manage the TeX system using `tlmgr --gui` command.
 
-## TeXStudio
+Custom and user packages should be placed into the following folder:
 
-TeXStudio is frequently updated, therefore Snap Store installation is not recommended. Use PPA and apt install, instead:
+```
+/usr/local/texlive/texmf-local/tex/latex
+```
 
-<https://linuxhint.com/install-texstudio-latex-editor-linux/>
-
-However, TeXStudio installs a seperate tex-live system on top of the existing tex system. So, to prevent TeXStudio installing a second TeX system on your Ubuntu:
-
-`$ apt --no-install-recommends install texstudio`
+Note that 2023 version of TeXlive comes with Biblatex and Babel packages, and they do not need to be installed seperately.
 
 ## ImageMagick
 
-`$ sudo apt install imagemagick`
+If not installed, install ImageMagick using the following:
 
-## Jabref
+```
+$ sudo apt install imagemagick
+```
 
-Jabref can be installed using Snap Store
+## Install LyX
+
+LyX can be installed using the Snap.
+
+Start LyX using the terminal command line, instead of directly starting from the application list.
+
+Fix the issue with the security policy of ghostscript as explained [here][d].
+
+[d]: https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion
+
+
+Essentially check the `gs` version with
+
+```
+$ gs --version
+```
+
+Make sure the version is >= 9.24. If yes, just remove this whole following section from `/etc/ImageMagick-6/policy.xml`:
+
+```
+<!-- disable ghostscript format types -->
+<policy domain="coder" rights="none" pattern="PS" />
+<policy domain="coder" rights="none" pattern="PS2" />
+<policy domain="coder" rights="none" pattern="PS3" />
+<policy domain="coder" rights="none" pattern="EPS" />
+<policy domain="coder" rights="none" pattern="PDF" />
+<policy domain="coder" rights="none" pattern="XPS" />
+```
+
+Make sure ImageMagick is installed. This a very standard package available in standard Ubuntu installations.
+
+Add the PDF viewer to LyX:
+
+* Go to Tools->Preferences->File Handling->Converters`
+* Create PDF to PNG converter using the following converter command:
+
+`convert -density 200 -trim -quality 100 -colorspace RGB -sharpen 0x1.0 $$i $$o`
+
+
+## Install TeXStudio
+
+Install TeXStudio using the PPA as explained in the followingweb page:
+
+<https://linuxhint.com/install-texstudio-latex-editor-linux/>
+
+```
+$ sudo add-apt-repository ppa:sunderme/texstudio
+$ sudo apt update
+$ sudo apt install texstudio
+
+```
+
+However, TeXStudio may install a seperate tex-live system on top of the existing tex system. So, to prevent TeXStudio installing a second TeX system on your Ubuntu:
+
+`$ apt --no-install-recommends install texstudio`
+
+Please check if this is the case for your version of Ubuntu. For Ubuntu 23.04, this may not be the case.
+
+
+## Install Jabref
+
+Jabref can be installed using Snap Store:
 
 <https://snapcraft.io/install/jabref/ubuntu>
 
-
-## LyX
-
-Install LyX using PPA.
-
-Add a new converter to LyX: PDF (graphics) -> PNG
-
-`convert -density 200 -trim -quality 100 -sharpen 0x1.0 $$i -colorspace RGB $$o`
+On Ubuntu 23.04, it is available on the Snap Store App.
