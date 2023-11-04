@@ -152,6 +152,8 @@ A tool to manage Gnome shell extensions.
 
 `gnome-extensions-app`
 
+## Install `ispell` and `spell` using `apt`
+
 
 ## System Monitor
 
