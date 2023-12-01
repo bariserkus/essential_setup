@@ -508,7 +508,7 @@ for version 28 with native compilation
 
 ## Install `vim`
 
-vim can be installed using apt.
+`vim` can be installed using `apt`.
 
 ## Markdown Tools
 Ghostwriter is a great tool for markdown editing. Ghostwriter requires the following packages as prerequiste:

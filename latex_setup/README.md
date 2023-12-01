@@ -94,7 +94,7 @@ Make sure ImageMagick is installed. This a very standard package available in st
 Add the PDF viewer to LyX:
 
 * Go to Tools->Preferences->File Handling->Converters`
-* Create PDF to PNG converter using the following converter command:
+* Create PDF (graphics) to PNG converter using the following converter command:
 
 `convert -density 200 -trim -quality 100 -colorspace RGB -sharpen 0x1.0 $$i $$o`
 
