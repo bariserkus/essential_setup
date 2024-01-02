@@ -1,19 +1,306 @@
 # Tools for Linux Setup
 
-These suggestions are mostly for Ubuntu 20.04, 22.04 and 23.04. However, some of them will not work with 23.04 as of today (September, 2023).
+These suggestions are mostly for 23.10. (December, 2023).
+
+## Auto Complete Command
+
+Create a file `~/.inputrc` with the content:
+
+```shell
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+```
+
+## Gnome Tweak Tools
+
+A utility tool to configure Gnome desktop and such.
+
+`$ sudo apt install gnome-tweaks` 
+
+`$ gnome-tweaks`
+
+## Gnome `dconf-editor`
+
+A utility to configure GNOME.
+
+You can install `dconf-editor` using `apt`.
+
+## Gnome Shell Extensions
+
+Gnome Shell Extensions are useful tools for Gnome. To install extensions, it is recommended to install the Extension Manager using `apt`:
+
+`sudo apt install gnome-shell-extension-manager`
+
+From the extension manager, you can search for the extention and install it. However, some of the extensions do not appear in the search of Extension Manager. For those, you can locate them at [Gnome Shell Extensions][11] web page. And then, direct the setup to the Extension Manager.
+
+[11]: https://extensions.gnome.org/
+
+For example, a very useful extention is Dash to Panel tool. This tool does not appear in the manager but you can locate it [here][22] and when you click to Install, it will ask for your permission to open the manager app. From the app, you can install the extention.
+
+[22]: https://extensions.gnome.org/extension/1160/dash-to-panel/
+
+## Install `ispell` and `spell` using `apt`
+
+## Git Setup
+
+Git can be installed using `apt`.
+
+## Git Credential Manager (GCM)
+
+Download the latest [deb package][55], and run the following:
+
+[55]: https://github.com/git-ecosystem/git-credential-manager/releases
+
+```shell
+$ sudo dpkg -i <path-to-package>
+$ git-credential-manager configure
+```
+To uninstall:
+
+```shell
+$ git-credential-manager unconfigure
+$ sudo dpkg -r gcm
+```
+
+See [this page][33] for reference.
+
+[33]: https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md
+
+## Setting up Credentials and GCM
+
+There are several ways to store GitHub credentials. I recommend the following method:
+
+```shell
+export GCM_CREDENTIAL_STORE=cache
+# or
+git config --global credential.credentialStore cache
+```
+
+This credential store uses Git's built-in ephemeral
+in-memory [credential cache][credential-cache]. 
+This helps you reduce the number of times you have to authenticate but
+doesn't require storing credentials on persistent storage. It's good for
+scenarios like [Azure Cloud Shell][azure-cloudshell]
+or [AWS CloudShell][aws-cloudshell], where you don't want to
+leave credentials on disk but also don't want to re-authenticate on every Git
+operation.
+
+By default, `git credential-cache` stores your credentials for 900 seconds.
+That, and any other [options it accepts][git-credential-cache-options],
+may be altered by setting them in the environment variable
+`GCM_CREDENTIAL_CACHE_OPTIONS` or the Git config value
+`credential.cacheOptions`. (Using the `--socket` option is untested
+and unsupported, but there's no reason it shouldn't work.)
+
+```shell
+export GCM_CREDENTIAL_CACHE_OPTIONS="--timeout 300"
+# or
+git config --global credential.cacheOptions "--timeout 300"
+```
+
+When you need the first credential verification, GCM will appear and you can verify your credentials from GitHub web page.
+
+See [this page][44] for reference.
+
+[44]: https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/credstores.md
+
+## Install `sysstat` using `apt`
+
+## Install `cscope` and `screen` using `apt`
+
+More info on cscope is here:
+
+<https://cscope.sourceforge.net/>
+
+More info on screen is here:
+
+<https://linuxize.com/post/how-to-use-linux-screen/>
+
+
+## Install `emacs`
+
+In Ubuntu 23.10, `emacs` is available in Snap Store, which is the recommended method of installation.
+
+For Native Compilation use the following (I did not test this in Ubuntu 23.10):
+
+```shell
+$ sudo add-apt-repository ppa:kelleyk/emacs
+$ sudo add update
+$ sudo apt install emacs28-nativecomp
+```
+for version 28 with native compilation. For newer versions, adjust accordingly.
+
+## Install `vim` using `apt`
+
+## Install `xclip` using `apt`
+
+## Install `flameshot` using Snap Store
+
+Note that Ubuntu 23.10 has the clip tool embedded into the settings parts of the  taskbar.
+
+## Markdown Tools
+Ghostwriter is a great tool for markdown editing. Ghostwriter requires the following packages as prerequiste:
+
+```shell
+$ sudo apt install g++ qtbase5-dev libqt5svg5-dev qtmultimedia5-dev qtwebengine5-dev pkg-config libqt5concurrent5 qttools5-dev-tools qttools5-dev libkf5coreaddons-dev libkf5xmlgui-dev libkf5configwidgets-dev libkf5sonnet-dev libkf5doctools5 libkf5doctools-dev cmake extra-cmake-modules libhunspell-dev
+```
+
+Also install seperately the following:
+
+* pandoc package: `sudo apt install pandoc`
+* multimarkdown package: `sudo apt install libtext-multimarkdown-perl`
+* cmark package: `sudo apt install cmark`
+
+For Ubuntu 23.10, install Ghostwriter using Snap Store, as it has its own specific version (23.10.xx).
+
+For Ubuntu 20.04, 22.04, install `ghostwriter` using `ppa` and `apt`. Don't use snap as it has the older version.
+
+
+## Reduce Ubuntu Titlebar Thickness
+
+Create the file `~/.config/gtk-3.0/gtk.css` with the contents below:
+
+```
+headerbar entry,
+headerbar spinbutton,
+headerbar button,
+headerbar separator {
+    margin-top: 0px; /* same as headerbar side padding for nicer proportions */
+    margin-bottom: 0px;
+}
+
+headerbar {
+    min-height: 24px;
+    padding-left: 2px; /* same as childrens vertical margins for nicer proportions */
+    padding-right: 2px;
+    margin: 0px; /* same as headerbar side padding for nicer proportions */
+    padding: 0px;
+  }
+
+
+/* No line below the title bar */
+.ssd .titlebar {
+    border-width: 2px;
+    box-shadow: none;
+}
+```
+
+Or 
+
+```
+/* shrink headerbars */
+headerbar {
+    min-height: 0px;
+    padding-left: 2px; /* same as childrens vertical margins for nicer proportions */
+    padding-right: 2px;
+    background-color: #2d2d2d;
+}
+
+headerbar entry,
+headerbar spinbutton,
+headerbar button,
+headerbar separator {
+    margin-top: 0px; /* same as headerbar side padding for nicer proportions */
+    margin-bottom: 0px;
+}
+
+/* shrink ssd titlebars */
+.default-decoration {
+    min-height: 0; /* let the entry and button drive the titlebar size */
+    padding: 0px;
+    background-color: #2d2d2d;
+}
+
+.default-decoration .titlebutton {
+    min-height: 0px; /* tweak these two props to reduce button size */
+    min-width: 0px;
+}
+
+window.ssd headerbar.titlebar {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    min-height: 0;
+}
+
+window.ssd headerbar.titlebar button.titlebutton {
+    padding-top: 3px;
+    padding-bottom:3px;
+    min-height: 0;
+}
+
+```
+
+
+## System Monitor
+
+Note that the following may not work for Ubuntu 23.10 at the moment. However, this is a great tool and hope it is fixed for 23.10.
+
+A Gnome shell extension to observe the system resources on the taskbar visually.
+
+Install it from the web page:
+
+<https://extensions.gnome.org/extension/120/system-monitor/>
+
+## Desktop Shortcut to Folders
+
+This is not a symbolic link.
+
+Create a file with `.desktop` extention with the following:
+
+```shell
+[Desktop Entry]
+Name=name_of_the_shortcut
+Exec=xdg-open /home/user/path_to_directory
+Type=Application
+Terminal=false
+Icon=/usr/share/icons/Yaru/48x48/places/folder.png
+```
+
+Then, 
+
+* allow executing this shortcut using right-click -> Properties -> Permissions -> "Allow executing file as program"
+* right-click "Allow Launching"
+
+
+## Make Monday the First Day of the Week
+
+Identify the locale:
+
+`$ locale | grep LC_TIME`
+
+Assume that the output is 
+
+`LC_TIME="en_US.UTF-8"`
+
+Then, open `/usr/share/i18n/locales/en_US` for editing. Add the line:
+
+`first_weekday 2`
+
+right before the line
+
+`END LC_TIME`
+
+and save. Generate the modified locale:
+
+`$ sudo locale-gen en_US.UTF-8`
+
+
+
+
+
 
 
 ## Creating Python Environments 
 
 Create a virtual environment using
 
-```
-$ python3 -m venv myenv
+```shell
+$ python3 -m venv myenv 
 ```
 
 and activate this environment using
 
-```
+```shell
 $ source myenv/bin/activate
 ```
 
@@ -25,158 +312,12 @@ First create a Python environment and activate it.
 
 Install using `pip` after activation using
 
-```
+```shell
 $ (myenv) pip install spyder numpy scipy pandas matplotlib sympy cython
 ```
 
 Start spyder from the virtual environment usig the CLI.
 
-## Auto Complete Command
-
-Create a file `~/.inputrc` with the content:
-
-```
-"\e[A": history-search-backward
-"\e[B": history-search-forward
-```
-
-## Git Setup
-
-Git can be installed using `apt`.
-
-Install Git Credential Manager as explained [here][1]:
-
-[1]: https://github.com/GitCredentialManager/git-credential-manager
-
-* download the deb package file of GCM
-* install using `sudo dpkg`
-* `$ git-credential-manager-core configure`
-
-Set a way to store password as explaine [here][2]. 
-
-[2]: https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/credstores.md
-
-One way to do this in Linux is
-
-`$ git config --global credential.credentialStore cache`
-
-Then GCM GUI will start automatically when git is called. Personal Accces Token should be used in the GCM GUI. Personal Access Token can be generated in GitHub using `Settings` -> `Developer Settings`.
-
-
-## Git Credentials (Old)
-
-Update the URL of origin remote using SSH instead of HTTPS;
-
-`git remote set-url origin git@github.com:username/repo.git`
-
-or
-
-Make Git store the username and password and it will never ask for them.
-
-`git config --global credential.helper store`
-
-Save the username and password for a session (cache it);
-
-`git config --global credential.helper cache`
-
-You can also set a timeout for the above setting
-
-`git config --global credential.helper 'cache --timeout=600'`
-
-
-## Gnome Tweak Tools
-
-A utility tool to configure Gnome desktop and such.
-
-`$ sudo apt install gnome-tweak-tool` 
-
-`$ gnome-tweaks`
-
-Note that you can activate already-installed extentions from here.
-
-## Gnome `dconf-editor`
-
-A utility to configure GNOME.
-
-You can install `dconf-editor` using `apt`.
-
-
-## Gnome Shell Extensions
-
-Note that the following may not work for Ubuntu 23.04.
-
-Small add-ons for Gnome to make it more practical and efficient.
-
-There are several ways to install extensions:
-
-1. Install a minimal set of extentions
-2. Install the extension using `apt`
-3. Install the extension using a web browser
-4. Download and install manually
-
-### 1. Install a minimal set of extensions
-
-`sudo apt install gnome-shell-extensions` 
-
-### 2. Install the extension using `apt`
-
-Search for Gnome Shell Extensions
-
-`$ apt search gnome-shell-extension-??????`
-
-Install an extension
-
-`$ sudo apt install gnome-shell-extension-??????`
-
-### 3. Install the extension using a web browser
-
-You can install the extensions from Gnome Extentions web site using a web browser plugin:
-
-<https://extensions.gnome.org/>
-
-- first install the plugin
-- then install the connector: `sudo apt install chrome-gnome-shell`
-- install the extension from the web site of that extension
-
-### 4. Download and install manually
-
-Please see related web pages...
-
-Please see <https://itsfoss.com/gnome-shell-extensions/> for more info.
-
-## Gnome Shell Extension Manager
-
-A tool to manage Gnome shell extensions.
-
-`sudo apt install gnome-shell-extension-prefs`
-
-`gnome-extensions-app`
-
-## Install `ispell` and `spell` using `apt`
-
-
-## System Monitor
-
-Note that the following may not work for Ubuntu 23.04.
-
-A Gnome shell extension to observe the system resources on the taskbar visually.
-
-Install it from the web page:
-
-<https://extensions.gnome.org/extension/120/system-monitor/>
-
-
-## Alacarte
-
-A tool that creates shortcuts of applications.
-
-`$ sudo apt install alacarte` 
-
-It appears as `Main Menu` in the Applications. It can be started using:
-
-`$ alacarte`
-
-I have used this program to create shortcut for `Eclipse` as it comes as a zip file and does not have installer.
 
 ## Multiple Versions of Eclipse
 
@@ -197,7 +338,7 @@ but these would be directly under the workspace folder, say  `vitis_workspace`.
 
 In this scenario, I want to have one main folder of `vitis_repo`, which will act Git repo folder, and I want to have one subfolder for each of the Vitis project and in each of these project folders I will have four Vitis project folders:
 
-```
+```shell
 vitisws
 ├── RemoteSystemsTempFiles
 └── vitis_repo
@@ -216,7 +357,7 @@ vitisws
 
 There is an alternate scenario that `vitis_repo` is placed out of the Vitis workspace directory. You can do both using Vitis-Eclipse Share Team option.
 
-```
+```shell
 vitisws
 └── RemoteSystemsTempFiles
 vitis_repo
@@ -272,25 +413,6 @@ or
 
 * `$ sudo service network-manager restart`
 
-## Desktop Shortcut to Folders
-
-This is not a symbolic link.
-
-Create a file with `.desktop` extention with the following:
-
-```
-[Desktop Entry]
-Name=name_of_the_shortcut
-Exec=xdg-open /home/user/path_to_directory
-Type=Application
-Terminal=false
-Icon=/usr/share/icons/Yaru/48x48/places/folder.png
-```
-
-Then, 
-
-* allow executing this shortcut using right-click -> Properties -> Permissions -> "Allow executing file as program"
-* right-click "Allow Launching"
 
 ## OpenSSL Libraries
 
@@ -461,7 +583,7 @@ Go to CUDA Developer web site and download the installer, follow the instruction
 
 The `.bashrc` enviroment:
 
-```
+```shell
 ## CUDA variables
 export CUDA_HOME="/usr/local/cuda"
 export PATH="$PATH:$CUDA_HOME/bin"
@@ -481,102 +603,6 @@ OpenCL headers are located at:
 A tool about OpenCL devices, `clinfo` can be installed with:
 
 `$ sudo apt install clinfo`
-
-## Install `sysstat`
-
-`$ sudo apt install sysstat`
-
-## Install `cscope` and `screen` using `apt`
-
-More infor on cscope is here:
-
-<https://cscope.sourceforge.net/>
-
-More info on screen is here:
-
-<https://linuxize.com/post/how-to-use-linux-screen/>
-
-## Install `emacs`
-
-`$ sudo add-apt-repository ppa:kelleyk/emacs`
-
-`$ sudo add update`
-
-`$ sudo apt install emacs28-nativecomp`
-
-for version 28 with native compilation
-
-## Install `vim`
-
-`vim` can be installed using `apt`.
-
-## Markdown Tools
-Ghostwriter is a great tool for markdown editing. Ghostwriter requires the following packages as prerequiste:
-
-```
-$ sudo apt install g++ qtbase5-dev libqt5svg5-dev qtmultimedia5-dev qtwebengine5-dev pkg-config libqt5concurrent5 qttools5-dev-tools qttools5-dev libkf5coreaddons-dev libkf5xmlgui-dev libkf5configwidgets-dev libkf5sonnet-dev libkf5doctools5 libkf5doctools-dev cmake extra-cmake-modules libhunspell-dev
-```
-
-Also install seperately the following:
-
-* pandoc package: `sudo apt install pandoc`
-* multimarkdown package: `sudo apt install libtext-multimarkdown-perl`
-* cmark package: `sudo apt install cmark`
-
-For Ubuntu 20.04, 22.04, install `ghostwriter` for markdown editor using ppa and apt. Don't use snap as it has the older version.
-
-For Ubuntu 23.04 install Ghostwriter using Snap Store, as it has its own specific version (23.04.xx).
-
-
-## Install `xclip` using `apt`
-
-Note that Ubuntu 23.04 has the clip tool embedded into the settings parts of the  taskbar.
-
-## Adding a Custom Directory to Include Library Path
-
-`LIBRARY_PATH` is used by `gcc` or `g++` before compilation to search directories containing static and shared libraries that need to be linked to your program.
-
-`LD_LIBRARY_PATH` is used by your program to search directories containing shared libraries after it has been successfully compiled and linked.
-
-Your libraries can be static or shared. If it is static then the code is copied over into your program and you don't need to search for the library after your program is compiled and linked. If your library is shared then it needs to be dynamically linked to your program and that's when LD_LIBRARY_PATH comes into play.
-
-Add this to `.bashrc` file and source it:
-
-`export LIBRARY_PATH=$LIBRARY_PATH:/your/custom/path/`
-`export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/custom/path/`
-
-Check if the directory is added correctly:
-
-`echo $LIBRARY_PATH`
-`echo $LD_LIBRARY_PATH`
-
-Similarly, add custom include path for C and C++:
-
-`export C_INCLUDE_PATH=$C_INCLUDE_PATH:/your/custom/path/`
-`export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/your/custom/path/`
-
-
-## Upgrade `python`
-
-**ATTENTION**
-
-This is quite risky and will probably break your Linux!!! I recommend not to use it!!!
-
-**ATTENTION**
-
-For Ubuntu 20.04, the default version of Python3 is 3.8. Most of the GTK programs (e.g. installer, updater) need Python 3.8 and they will not work with a newer version.
-
-One way to workaround for may be to tell the GTK programs to use Python 3.8 even if a newer version is the default one. For example:
-
-`$sudo vim /usr/bin/gnome-terminal`
-
-Change `#!/usr/bin/python3` to `#!/usr/bin/python3.8`
-
-Do the same for `/usr/bin/software-properties-gtk` and `/usr/bin/update-manager`
-
-However, in my case the update manager did not start properly for the last one. So I switch shebang back to `#!/usr/bin/python3` for `update-manager`.
-
-
 
 
 
