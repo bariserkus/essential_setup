@@ -6,30 +6,7 @@ There is a quick installation guide [here][a].
 
 [a]: https://tug.org/texlive/quickinstall.html
 
-Make sure necessary Perl packages installed:
-
-```
-$ perl -MLWP -le "print(LWP->VERSION)"
-```
-
-LWP is generally installed with standard Ubuntu installations. If not installed, visit [this][c] web page.
-
-[c]: https://lwp.interglacial.com/ch01_03.htm
-
-Install `perl-tk` package using `apt`.
-
-Download the latest version of `install-tl` form [this][b] web page.
-
-[b]: https://mirror.dogado.de/tex-archive/systems/texlive/tlnet/
-
-Start installer using:
-```
-$ sudo perl install-tl -gui
-```
-
-Suggest to install full system.
-
-TeXlive is installed to `\usr\local\texlive`. For upgrades and other future modifications, the folder is not writable. There are several ways suggested to fix this. I prefer to give access to this folder using
+* TeXlive is installed to `\usr\local\texlive`. For upgrades and other future modifications, the folder is not writable. There are several ways suggested to fix this. First create the folder `textlive` under `/usr/local/` using `sudo`. I prefer to give access to this folder using
 
 ```
 $ sudo chmod -R 777 /usr/local/texlive
@@ -42,15 +19,46 @@ or
 ```
 
 
-After installation you can manage the TeX system using `tlmgr --gui` command.
+* Make sure necessary Perl packages installed:
 
-Custom and user packages should be placed into the following folder:
+```
+$ perl -MLWP -le "print(LWP->VERSION)"
+```
+
+LWP is generally installed with standard Ubuntu installations. If not installed, visit [this][c] web page.
+
+[c]: https://lwp.interglacial.com/ch01_03.htm
+
+* Install `perl-tk` package using `apt`.
+* Install `tk` package using `apt`.
+* Download the latest version of `install-tl-unx.tar.gz` form [this][b] web page.
+
+[b]: https://mirror.dogado.de/tex-archive/systems/texlive/tlnet/
+
+* Unzip the package:
+```
+$ zcat < install-tl-unx.tar.gz | tar xf -
+```
+
+* Start installer using:
+```
+$ cd install-tl-*
+$ sudo perl install-tl -gui
+```
+
+* I suggest to install full system.
+
+
+
+* After installation you can manage the TeX system using `tlmgr --gui` command.
+
+* Custom and user packages should be placed into the following folder:
 
 ```
 /usr/local/texlive/texmf-local/tex/latex
 ```
 
-Note that 2023 version of TeXlive comes with Biblatex and Babel packages, and they do not need to be installed seperately.
+* Note that 2023 version of TeXlive comes with Biblatex and Babel packages, and they do not need to be installed seperately.
 
 ## ImageMagick
 
