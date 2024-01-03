@@ -48,7 +48,21 @@ $ sudo perl install-tl -gui
 
 * I suggest to install full system.
 
+*Add /usr/local/texlive/2023/texmf-dist/doc/man to MANPATH.
+*Add /usr/local/texlive/2023/texmf-dist/doc/info to INFOPATH.
+*Most importantly, add /usr/local/texlive/2023/bin/x86_64-linux to your PATH for current and future sessions:
 
+```
+export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
+export MANPATH="/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH"
+```
+
+Rerun:
+
+```
+$ sudo chmod -R 777 /usr/local/texlive
+```
 
 * After installation you can manage the TeX system using `tlmgr --gui` command.
 

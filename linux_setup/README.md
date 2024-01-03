@@ -2,6 +2,17 @@
 
 These suggestions are mostly for 23.10. (December, 2023).
 
+## Package Installer for Ubuntu 23.10
+
+Ubuntu 23.10 does not support installing downloaded dep packages by double clicking it. To be able to that you can install `Gdebi` from App Center by selecting the Debian Packages filter.
+
+You can always install deb packages by 
+
+```
+$ sudo dpkg -i yourfile.deb
+```
+
+
 ## Auto Complete Command
 
 Create a file `~/.inputrc` with the content:
