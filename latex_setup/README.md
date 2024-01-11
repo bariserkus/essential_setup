@@ -15,7 +15,7 @@ $ sudo chmod -R 777 /usr/local/texlive
 or
 
 ```
-`$ sudo chown -R "$USER" /usr/local/texlive`
+$ sudo chown -R "$USER" /usr/local/texlive
 ```
 
 
