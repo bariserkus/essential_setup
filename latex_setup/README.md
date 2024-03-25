@@ -118,7 +118,9 @@ Add the PDF viewer to LyX:
 * Go to Tools->Preferences->File Handling->Converters`
 * Create PDF (graphics) to PNG converter using the following converter command:
 
-`convert -density 200 -trim -quality 100 -colorspace RGB -sharpen 0x1.0 $$i $$o`
+```
+convert -density 200 -trim -quality 100 -colorspace RGB -sharpen 0x1.0 $$i $$o
+```
 
 
 ## Install TeXStudio
@@ -131,12 +133,13 @@ Install TeXStudio using the PPA as explained in the followingweb page:
 $ sudo add-apt-repository ppa:sunderme/texstudio
 $ sudo apt update
 $ sudo apt install texstudio
-
 ```
 
 However, TeXStudio may install a seperate tex-live system on top of the existing tex system. So, to prevent TeXStudio installing a second TeX system on your Ubuntu:
 
-`$ apt --no-install-recommends install texstudio`
+```
+$ apt --no-install-recommends install texstudio
+```
 
 Please check if this is the case for your version of Ubuntu. For Ubuntu 23.04, this may not be the case.
 
