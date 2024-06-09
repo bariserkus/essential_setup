@@ -1,10 +1,10 @@
 # Tools for Linux Setup
 
-These suggestions are mostly for 24.04. (June, 2024).
+These suggestions are mostly for 23.10. (December, 2023).
 
-## Package Installer for Ubuntu 24.04
+## Package Installer for Ubuntu 23.10
 
-Ubuntu 24.04 does not support installing downloaded dep packages by double clicking it. To be able to that you can install `Gdebi` from App Center by selecting the Debian Packages filter.
+Ubuntu 23.10 does not support installing downloaded dep packages by double clicking it. To be able to that you can install `Gdebi` from App Center by selecting the Debian Packages filter.
 
 You can always install deb packages by 
 
@@ -82,11 +82,9 @@ See [this page][33] for reference.
 There are several ways to store GitHub credentials. I recommend the following method:
 
 ```shell
-$ export GCM_CREDENTIAL_STORE=cache
-```
-or
-```shell
-$ git config --global credential.credentialStore cache
+export GCM_CREDENTIAL_STORE=cache
+# or
+git config --global credential.credentialStore cache
 ```
 
 This credential store uses Git's built-in ephemeral
@@ -106,11 +104,9 @@ may be altered by setting them in the environment variable
 and unsupported, but there's no reason it shouldn't work.)
 
 ```shell
-$ export GCM_CREDENTIAL_CACHE_OPTIONS="--timeout 300"
-```
-or
-```shell
-$ git config --global credential.cacheOptions "--timeout 300"
+export GCM_CREDENTIAL_CACHE_OPTIONS="--timeout 300"
+# or
+git config --global credential.cacheOptions "--timeout 300"
 ```
 
 When you need the first credential verification, GCM will appear and you can verify your credentials from GitHub web page.
@@ -134,9 +130,9 @@ More info on screen is here:
 
 ## Install `emacs`
 
-In Ubuntu 24.04, `emacs` is available in Snap Store, which is the recommended method of installation.
+In Ubuntu 23.10, `emacs` is available in Snap Store, which is the recommended method of installation.
 
-For Native Compilation use the following (I did not test this in Ubuntu 24.04):
+For Native Compilation use the following (I did not test this in Ubuntu 23.10):
 
 ```shell
 $ sudo add-apt-repository ppa:kelleyk/emacs
@@ -151,7 +147,7 @@ for version 28 with native compilation. For newer versions, adjust accordingly.
 
 ## Install `flameshot` using Snap Store
 
-Note that Ubuntu 24.04 has the clip tool embedded into the settings parts of the  taskbar.
+Note that Ubuntu 23.10 has the clip tool embedded into the settings parts of the  taskbar.
 
 ## Markdown Tools
 Ghostwriter is a great tool for markdown editing. Ghostwriter requires the following packages as prerequiste:
@@ -166,7 +162,7 @@ Also install seperately the following:
 * multimarkdown package: `sudo apt install libtext-multimarkdown-perl`
 * cmark package: `sudo apt install cmark`
 
-For Ubuntu 24.04, install Ghostwriter using Snap Store, as it has its own specific version (24.04.xx).
+For Ubuntu 23.10, install Ghostwriter using Snap Store, as it has its own specific version (23.10.xx).
 
 For Ubuntu 20.04, 22.04, install `ghostwriter` using `ppa` and `apt`. Don't use snap as it has the older version.
 
@@ -200,7 +196,7 @@ headerbar {
 }
 ```
 
-If the above code does not work, you may try the following:
+Or 
 
 ```
 /* shrink headerbars */
@@ -248,7 +244,7 @@ window.ssd headerbar.titlebar button.titlebutton {
 
 ## System Monitor
 
-Note that the following may not work for Ubuntu 24.04 at the moment. However, this is a great tool and hope it is fixed for 24.04.
+Note that the following may not work for Ubuntu 23.10 at the moment. However, this is a great tool and hope it is fixed for 23.10.
 
 A Gnome shell extension to observe the system resources on the taskbar visually.
 
@@ -298,6 +294,11 @@ right before the line
 and save. Generate the modified locale:
 
 `$ sudo locale-gen en_US.UTF-8`
+
+
+
+
+
 
 
 ## Creating Python Environments 
