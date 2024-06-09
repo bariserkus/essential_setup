@@ -2,24 +2,26 @@
 
 ## Install TeXLive
 
-There is a quick installation guide [here][a].
+There is a quick installation guide [here][a]. I will explain the procedure and prerequistes in detail below. 
 
 [a]: https://tug.org/texlive/quickinstall.html
 
+The following installation notes are prepared for TeXLive 2024. For other versions, please modify as required.
+
 * TeXlive is installed to `\usr\local\texlive`. For upgrades and other future modifications, the folder is not writable. There are several ways suggested to fix this. First create the folder `textlive` under `/usr/local/` using `sudo`. I prefer to give access to this folder using
 
-```
+```shell
 $ sudo chmod -R 777 /usr/local/texlive
 ```
 
 or
 
-```
+```shell
 $ sudo chown -R "$USER" /usr/local/texlive
 ```
 
 
-* Make sure necessary Perl packages installed:
+* First, make sure necessary Perl packages installed:
 
 ```
 $ perl -MLWP -le "print(LWP->VERSION)"
@@ -28,6 +30,8 @@ $ perl -MLWP -le "print(LWP->VERSION)"
 LWP is generally installed with standard Ubuntu installations. If not installed, visit [this][c] web page.
 
 [c]: https://lwp.interglacial.com/ch01_03.htm
+
+Then, do the following:
 
 * Install `perl-tk` package using `apt`.
 * Install `tk` package using `apt`.
@@ -48,14 +52,14 @@ $ sudo perl install-tl -gui
 
 * I suggest to install full system.
 
-*Add /usr/local/texlive/2023/texmf-dist/doc/man to MANPATH.
-*Add /usr/local/texlive/2023/texmf-dist/doc/info to INFOPATH.
-*Most importantly, add /usr/local/texlive/2023/bin/x86_64-linux to your PATH for current and future sessions:
+*Add /usr/local/texlive/2024/texmf-dist/doc/man to MANPATH.
+*Add /usr/local/texlive/2024/texmf-dist/doc/info to INFOPATH.
+*Most importantly, add /usr/local/texlive/2024/bin/x86_64-linux to your PATH for current and future sessions:
 
 ```
-export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
-export MANPATH="/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH"
-export INFOPATH="/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH"
+export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
+export MANPATH="/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH"
 ```
 
 Rerun:
@@ -64,7 +68,7 @@ Rerun:
 $ sudo chmod -R 777 /usr/local/texlive
 ```
 
-* After installation you can manage the TeX system using `tlmgr --gui` command.
+* After installation, you can manage the TeX system using `tlmgr --gui` command.
 
 * Custom and user packages should be placed into the following folder:
 
@@ -72,7 +76,7 @@ $ sudo chmod -R 777 /usr/local/texlive
 /usr/local/texlive/texmf-local/tex/latex
 ```
 
-* Note that 2023 version of TeXlive comes with Biblatex and Babel packages, and they do not need to be installed seperately.
+* Note that 2024 version of TeXlive comes with `biblatex` and `babel` packages, and they do not need to be installed seperately.
 
 ## ImageMagick
 
